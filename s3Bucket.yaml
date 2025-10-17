@@ -4,4 +4,4 @@ Resources:
   s3BucketSL:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: s3bucket
+      BucketName: super-s3-bucket-sl
