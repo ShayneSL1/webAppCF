@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: This web app consists of an app within a single region, a VPC with an IGW, two availability zones, a public subnet in each, an app subnet with an EC2 instance in each, and a DB subnet with an RDS instance in each.
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    CidrBlock: 10.0.0.0/16
+    EnableDnsSupport: True
+    EnableDnsHostnames: True
+    Tags:
+      -  Key: Name
+         Value: vpc
