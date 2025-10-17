@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: A simple S3 bucket
+Description: A simple S3 bucket, ResourceID can have capitals, but BucketName property requires no uppercase letters. Furthermore, s3 buckets are GLOBALLY named.
 Resources:
   s3BucketSL:
     Type: AWS::S3::Bucket
