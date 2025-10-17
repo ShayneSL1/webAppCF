@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: A simple S3 bucket
 Resources:
-  mys3bucket:
+  s3BucketSL:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: s3bucket
