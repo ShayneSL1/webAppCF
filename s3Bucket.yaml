@@ -5,3 +5,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: s3Bucket
+      Tags:
+        - Key: Name 
+          Value: MyS3Bucket
+          
