@@ -72,3 +72,24 @@ Resources:
       Tags:
         - Key: Name
           Value: databasesubnet2
+
+  #Internet Gateway
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        -  Key: Name
+           Value: InternetGateway
+           
+  #AttachIGW
+  AttachIGW:
+    Type:  AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref MyVPC
+      InternetGatewayId: !Ref InternetGateway
+      
+  #Route Tables
+
+  #Routes
+
+  #Subnet Associations
