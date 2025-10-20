@@ -157,7 +157,18 @@ Resources:
           Value:  App1
 
   #App Instance in AZ1
-
+  appInstanceAZ1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0199d4b5b8b4fde0e
+      SubnetId: !Ref appSubnetAZ1
+      SecurityGroupIds:
+        - !Ref appInstance2SG
+      Tags:
+        - Key: Name
+          Value:  App2
+          
   #Security Group for App instance in AZ 0
   appInstance1SG:
     Type: AWS::EC2::SecurityGroup
@@ -171,4 +182,13 @@ Resources:
           SourceSecurityGroupId: !Ref BastionSecurityGroup
   
   #Security Group for App instance in AZ 1
-
+  appInstance2SG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Allow icmp ping from App Instance 1 in AZ0'
+      VpcId: !Ref MyVPC
+      SecurityGroupIngress:
+        - IpProtocol: icmp
+          FromPort: -1
+          ToPort: -1
+          SourceSecurityGroupId: !Ref appInstance1SG
