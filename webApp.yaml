@@ -159,6 +159,16 @@ Resources:
   #App Instance in AZ1
 
   #Security Group for App instance in AZ 0
-
+  appInstance1SG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Allow SSH from Bastion Instance'
+      VpcId: !Ref MyVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          SourceSecurityGroupId: !Ref BastionSecurityGroup
+  
   #Security Group for App instance in AZ 1
 
