@@ -133,15 +133,16 @@ Resources:
 
   #Bastion Host Security Group
   BastionSecurityGroup:
-    Type:
+    Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription:
-      VpcId:
+      GroupDescription: 'Enable SSH Access'
+      VpcId: !Ref MyVPC
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
           CidrIP: 142.112.237.220/32
+          
   #App Instance in AZ0
 
   #App Instance in AZ1
