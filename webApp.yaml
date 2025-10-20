@@ -142,8 +142,19 @@ Resources:
           FromPort: 22
           ToPort: 22
           CidrIP: 142.112.237.220/32
-          
+
   #App Instance in AZ0
+  appInstanceAZ0:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0199d4b5b8b4fde0e
+      SubnetId: !Ref appSubnetAZ0
+      SecurityGroupIds:
+        - !Ref appInstance1SG
+      Tags:
+        - Key: Name
+          Value:  App1
 
   #App Instance in AZ1
 
