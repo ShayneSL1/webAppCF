@@ -113,3 +113,9 @@ Resources:
     Properties:
       SubnetId: !Ref publicSubnetAZ0
       RouteTableId: !Ref PublicRouteTable
+  
+  PublicSubnetAZ1Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref publicSubnetAZ1
+      RouteTableId: !Ref PublicRouteTable
