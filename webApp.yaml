@@ -119,3 +119,16 @@ Resources:
     Properties:
       SubnetId: !Ref publicSubnetAZ1
       RouteTableId: !Ref PublicRouteTable
+
+  #Bastion Host EC2
+
+  #Bastion Host Security Group
+
+  #App Instance in AZ0
+
+  #App Instance in AZ1
+
+  #Security Group for App instance in AZ 0
+
+  #Security Group for App instance in AZ 1
+  
