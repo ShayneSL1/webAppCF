@@ -83,14 +83,14 @@ Resources:
            
   #AttachIGW
   AttachIGW:
-    Type:  AWS::EC2::VPCGatewayAttachment
+    Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       VpcId: !Ref MyVPC
       InternetGatewayId: !Ref InternetGateway
       
   #Route Tables
   PublicRouteTable:
-    Type:  AWS::EC2::RouteTable
+    Type: AWS::EC2::RouteTable
     Properties:
       VpcId: !Ref MyVPC
       Tags:
@@ -98,5 +98,18 @@ Resources:
           Value: RoutingTable
 
   #Routes
-
+  PublicRoute:
+    Type: AWS::EC2::Route
+    #This DependsOn may not be referring internally. Current build does not have that assumption as it is sans-(!ref). Need to build stack to see if this works.
+    DependsOn: AttachIGW
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: '0.0.0.0/0'
+      GatewayId: !Ref InternetGateway
+      
   #Subnet Associations
+  PublicSubnetAZ0Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref publicSubnetAZ0
+      RouteTableId: !Ref PublicRouteTable
